@@ -14,8 +14,13 @@ Please refer to this [repo](https://github.com/RishabhGhora/OCR) for more detail
 4. Install remaining libraries `pip3 install -r requirements.txt`
 5. Create dbert directory for text only model `mkdir dbert`
 6. Download the weights from [here](https://drive.google.com/drive/folders/1CL-QO4-o5W1ZdDK721CvkCfAXWGXc0ws?usp=sharing) and place in dbert directory
-7. Create models directory `mkdir models`
+7. Create models directory for Transformers model `mkdir models`
 8. Download the final model weights from [here](https://drive.google.com/drive/folders/1Q7845UwHYhQztt_FUXlgRbuiTrVTV9No?usp=sharing)<br /> and place in models directory
    NOTE: make sure CHECKPOINT variable in `transfomers_model.py` is the same as model weight file name
-9. To run the UI `python app.py`
-10. To use CLI `python hmd sample_images`
+   
+### Usage 
+1. To run the UI `python app.py`
+2. To use CLI `python hmd sample_images`
+
+
+This tool accepts images as input and returns the extracted text from the image, the classification of the image + text whether it is hateful or not and its probability, the classifcation of the text whether it is hateful or not and its probability. Comnand line tool creates csv from input images in sample_images folder. 

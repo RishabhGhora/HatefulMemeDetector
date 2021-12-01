@@ -15,13 +15,11 @@ import base64
 from PIL import Image
 import numpy as np
 from OCR import get_text
-from text_only_model import Predictor as TextOnlyPredictor
 from transformers_model import Predictor as TransformersPredictor
 
 
 # Load models first 
 transformers_predictor = TransformersPredictor()
-text_only_predictor = TextOnlyPredictor()
 
 # Global variables
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -103,7 +101,6 @@ def parse_contents(contents, filename, date):
     contents = resize_input(im)
 
     classification, transformers_probs = transformers_predictor.evaluate("uploaded_image.png",text)
-    txt_classification, text_only_probs = text_only_predictor.evaluate(text)
     
     return html.Div([
         html.H5('Original Filename: ' + filename, id='filename', key=filename),
@@ -114,8 +111,6 @@ def parse_contents(contents, filename, date):
         html.H5("Detected Text: " + text, id='txt', key=text),
         html.H5("Image + Text Classification: " + classification, id='classification', key=classification),
         html.H5("Image + Text Probability: " + str(transformers_probs), id='transformers_probs', key=str(transformers_probs)),
-        html.H5("Text Only Classification: " + txt_classification, id='txt_classification', key=txt_classification),
-        html.H5("Text Only Probability: " + str(text_only_probs), id='text_only_probs', key=str(text_only_probs)),
         #html.Div([html.Button("Download .txt File", id="btn"), Download(id="download")]),
         html.Hr(),
     ], style={
